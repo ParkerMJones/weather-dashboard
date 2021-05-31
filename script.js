@@ -6,7 +6,13 @@ var day3 = document.getElementById("day3");
 var day4 = document.getElementById("day4");
 var day5 = document.getElementById("day5");
 
+fiveDayHeader = document.getElementById("5dayheader");
+document.getElementById("5dayheader").style.visibility = 'hidden'; 
+
 searchButton = document.getElementById("search-button");
+
+dt = luxon.DateTime.now();
+console.log(dt);
 
 // autocomplete code taken from tutorialspoint.com
 function autocomplete(searchEle, arr) {
@@ -95,6 +101,7 @@ function autocomplete(searchEle, arr) {
 
 
 searchButton.addEventListener('click', function() {
+document.getElementById("5dayheader").style.visibility = 'visible'; 
 console.log(cityName.value);
 fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&appid=2bf17073b305273232e18de9ad5d534c")
     .then(function(response) {
@@ -105,7 +112,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&
         console.log(response);
 
         var todayHeader = document.createElement("h2");
-        todayHeader.textContent = response.name;
+        todayHeader.textContent = response.name + " " + dt.toLocaleString();
         today.appendChild(todayHeader);
 
         var temp = document.createElement("p");
@@ -122,19 +129,64 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&
     })
 
     // 5 day forecast
-    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + cityName.value + "&appid=2bf17073b305273232e18de9ad5d534c")
+    fetch("https://api.openweathermap.org/data/2.5/forecast/?q=" + cityName.value + "&appid=2bf17073b305273232e18de9ad5d534c")
     .then(function(response2) {
     return response2.json();
 })
 
 .then(function (response2) {
     console.log(response2);
-    
-    
+        var day1Temp = document.createElement("p");
+            day1Temp.textContent = "Temp: " + response2.list[8].main.temp;
+            day1.appendChild(day1Temp);
+        var day1Wind = document.createElement('p');
+            day1Wind.textContent = "Wind: " + response2.list[8].wind.speed + " MPH";
+            day1.appendChild(day1Wind);
+        var day1Humidity = document.createElement('p');
+            day1Humidity.textContent = "Humidity: " + response2.list[8].main.humidity + "%";
+            day1.appendChild(day1Humidity);
+
+        var day2Temp = document.createElement("p");
+            day2Temp.textContent = "Temp: " + response2.list[16].main.temp;
+            day2.appendChild(day2Temp);
+        var day2Wind = document.createElement('p');
+            day2Wind.textContent = "Wind: " + response2.list[16].wind.speed + " MPH";
+            day2.appendChild(day2Wind);
+        var day2Humidity = document.createElement('p');
+            day2Humidity.textContent = "Humidity: " + response2.list[16].main.humidity + "%";
+            day2.appendChild(day2Humidity);
+
+        var day3Temp = document.createElement("p");
+            day3Temp.textContent = "Temp: " + response2.list[24].main.temp;
+            day3.appendChild(day3Temp);
+        var day3Wind = document.createElement('p');
+            day3Wind.textContent = "Wind: " + response2.list[24].wind.speed + " MPH";
+            day3.appendChild(day3Wind);
+        var day3Humidity = document.createElement('p');
+            day3Humidity.textContent = "Humidity: " + response2.list[24].main.humidity + "%";
+            day3.appendChild(day3Humidity);
+
+        var day4Temp = document.createElement("p");
+            day4Temp.textContent = "Temp: " + response2.list[32].main.temp;
+            day4.appendChild(day4Temp);
+        var day4Wind = document.createElement('p');
+            day4Wind.textContent = "Wind: " + response2.list[32].wind.speed + " MPH";
+            day4.appendChild(day4Wind);
+        var day4Humidity = document.createElement('p');
+            day4Humidity.textContent = "Humidity: " + response2.list[32].main.humidity + "%";
+            day4.appendChild(day4Humidity);
+
+        var day5Temp = document.createElement("p");
+            day5Temp.textContent = "Temp: " + response2.list[39].main.temp;
+            day5.appendChild(day5Temp);
+        var day5Wind = document.createElement('p');
+            day5Wind.textContent = "Wind: " + + response2.list[39].wind.speed + " MPH";
+            day5.appendChild(day5Wind);
+        var day5Humidity = document.createElement('p');
+            day5Humidity.textContent = "Humidity: " + response2.list[39].main.humidity + "%";
+            day5.appendChild(day5Humidity);
 });
 });
-
-
 
 
 
