@@ -118,6 +118,9 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&
         var todayHeader = document.createElement("h2");
         todayHeader.textContent = response.name + " " + dt.toLocaleString();
         today.appendChild(todayHeader);
+        var todayIcon = document.createElement("img");
+        todayIcon.setAttribute("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+        today.appendChild(todayIcon);
 
         var temp = document.createElement("p");
         temp.textContent = "Temp: " + response.main.temp + " ºF";
@@ -147,6 +150,9 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&
         var day1Date = document.createElement("h4");
             day1Date.textContent = dt.plus( {days: 1} ).toLocaleString();
             day1.appendChild(day1Date);
+        var day1Icon = document.createElement("img");
+            day1Icon.setAttribute("src", "http://openweathermap.org/img/w/" + response2.list[8].weather[0].icon + ".png");
+            day1.appendChild(day1Icon);
         var day1Temp = document.createElement("p");
             day1Temp.textContent = "Temp: " + response2.list[8].main.temp + " ºF";
             day1.appendChild(day1Temp);
@@ -160,6 +166,9 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&
         var day2Date = document.createElement("h4");
             day2Date.textContent = dt.plus( {days: 2} ).toLocaleString();
             day2.appendChild(day2Date);
+        var day2Icon = document.createElement("img");
+            day2Icon.setAttribute("src", "http://openweathermap.org/img/w/" + response2.list[16].weather[0].icon + ".png");
+            day2.appendChild(day2Icon);
         var day2Temp = document.createElement("p");
             day2Temp.textContent = "Temp: " + response2.list[16].main.temp + " ºF";
             day2.appendChild(day2Temp);
@@ -173,6 +182,9 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&
         var day3Date = document.createElement("h4");
             day3Date.textContent = dt.plus( {days: 3} ).toLocaleString();
             day3.appendChild(day3Date);
+        var day3Icon = document.createElement("img");
+            day3Icon.setAttribute("src", "http://openweathermap.org/img/w/" + response2.list[24].weather[0].icon + ".png");
+            day3.appendChild(day3Icon);
         var day3Temp = document.createElement("p");
             day3Temp.textContent = "Temp: " + response2.list[24].main.temp + " ºF";
             day3.appendChild(day3Temp);
@@ -186,6 +198,9 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&
         var day4Date = document.createElement("h4");
             day4Date.textContent = dt.plus( {days: 4} ).toLocaleString();
             day4.appendChild(day4Date);
+        var day4Icon = document.createElement("img");
+            day4Icon.setAttribute("src", "http://openweathermap.org/img/w/" + response2.list[32].weather[0].icon + ".png");
+            day4.appendChild(day4Icon);
         var day4Temp = document.createElement("p");
             day4Temp.textContent = "Temp: " + response2.list[32].main.temp + " ºF";
             day4.appendChild(day4Temp);
@@ -199,6 +214,9 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&
         var day5Date = document.createElement("h4");
             day5Date.textContent = dt.plus( {days: 5} ).toLocaleString();
             day5.appendChild(day5Date);
+        var day5Icon = document.createElement("img");
+            day5Icon.setAttribute("src", "http://openweathermap.org/img/w/" + response2.list[39].weather[0].icon + ".png");
+            day5.appendChild(day5Icon);
         var day5Temp = document.createElement("p");
             day5Temp.textContent = "Temp: " + response2.list[39].main.temp + " ºF";
             day5.appendChild(day5Temp);
