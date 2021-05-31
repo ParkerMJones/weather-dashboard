@@ -103,8 +103,12 @@ function autocomplete(searchEle, arr) {
 searchButton.addEventListener('click', function() {
 document.getElementById("5dayheader").style.visibility = 'visible'; 
 console.log(cityName.value);
-fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&appid=2bf17073b305273232e18de9ad5d534c")
+fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&units=imperial&appid=2bf17073b305273232e18de9ad5d534c")
     .then(function(response) {
+        if (response.status === 404) {
+            alert("Please Enter a Valid City");
+            location.reload();
+        }
         return response.json();
     })
 
@@ -116,7 +120,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&
         today.appendChild(todayHeader);
 
         var temp = document.createElement("p");
-        temp.textContent = "Temp: " + response.main.temp;
+        temp.textContent = "Temp: " + response.main.temp + " ºF";
         today.appendChild(temp);
 
         var wind = document.createElement("p");
@@ -129,15 +133,22 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&
     })
 
     // 5 day forecast
-    fetch("https://api.openweathermap.org/data/2.5/forecast/?q=" + cityName.value + "&appid=2bf17073b305273232e18de9ad5d534c")
+    fetch("https://api.openweathermap.org/data/2.5/forecast/?q=" + cityName.value + "&units=imperial&appid=2bf17073b305273232e18de9ad5d534c")
     .then(function(response2) {
+    if (response2.status === 404) {
+        alert("Please Enter a Valid City");
+        location.reload();
+    }
     return response2.json();
 })
 
 .then(function (response2) {
     console.log(response2);
+        var day1Date = document.createElement("h4");
+            day1Date.textContent = dt.plus( {days: 1} ).toLocaleString();
+            day1.appendChild(day1Date);
         var day1Temp = document.createElement("p");
-            day1Temp.textContent = "Temp: " + response2.list[8].main.temp;
+            day1Temp.textContent = "Temp: " + response2.list[8].main.temp + " ºF";
             day1.appendChild(day1Temp);
         var day1Wind = document.createElement('p');
             day1Wind.textContent = "Wind: " + response2.list[8].wind.speed + " MPH";
@@ -146,8 +157,11 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&
             day1Humidity.textContent = "Humidity: " + response2.list[8].main.humidity + "%";
             day1.appendChild(day1Humidity);
 
+        var day2Date = document.createElement("h4");
+            day2Date.textContent = dt.plus( {days: 2} ).toLocaleString();
+            day2.appendChild(day2Date);
         var day2Temp = document.createElement("p");
-            day2Temp.textContent = "Temp: " + response2.list[16].main.temp;
+            day2Temp.textContent = "Temp: " + response2.list[16].main.temp + " ºF";
             day2.appendChild(day2Temp);
         var day2Wind = document.createElement('p');
             day2Wind.textContent = "Wind: " + response2.list[16].wind.speed + " MPH";
@@ -156,8 +170,11 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&
             day2Humidity.textContent = "Humidity: " + response2.list[16].main.humidity + "%";
             day2.appendChild(day2Humidity);
 
+        var day3Date = document.createElement("h4");
+            day3Date.textContent = dt.plus( {days: 3} ).toLocaleString();
+            day3.appendChild(day3Date);
         var day3Temp = document.createElement("p");
-            day3Temp.textContent = "Temp: " + response2.list[24].main.temp;
+            day3Temp.textContent = "Temp: " + response2.list[24].main.temp + " ºF";
             day3.appendChild(day3Temp);
         var day3Wind = document.createElement('p');
             day3Wind.textContent = "Wind: " + response2.list[24].wind.speed + " MPH";
@@ -166,8 +183,11 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&
             day3Humidity.textContent = "Humidity: " + response2.list[24].main.humidity + "%";
             day3.appendChild(day3Humidity);
 
+        var day4Date = document.createElement("h4");
+            day4Date.textContent = dt.plus( {days: 4} ).toLocaleString();
+            day4.appendChild(day4Date);
         var day4Temp = document.createElement("p");
-            day4Temp.textContent = "Temp: " + response2.list[32].main.temp;
+            day4Temp.textContent = "Temp: " + response2.list[32].main.temp + " ºF";
             day4.appendChild(day4Temp);
         var day4Wind = document.createElement('p');
             day4Wind.textContent = "Wind: " + response2.list[32].wind.speed + " MPH";
@@ -175,9 +195,12 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&
         var day4Humidity = document.createElement('p');
             day4Humidity.textContent = "Humidity: " + response2.list[32].main.humidity + "%";
             day4.appendChild(day4Humidity);
-
+            
+        var day5Date = document.createElement("h4");
+            day5Date.textContent = dt.plus( {days: 5} ).toLocaleString();
+            day5.appendChild(day5Date);
         var day5Temp = document.createElement("p");
-            day5Temp.textContent = "Temp: " + response2.list[39].main.temp;
+            day5Temp.textContent = "Temp: " + response2.list[39].main.temp + " ºF";
             day5.appendChild(day5Temp);
         var day5Wind = document.createElement('p');
             day5Wind.textContent = "Wind: " + + response2.list[39].wind.speed + " MPH";

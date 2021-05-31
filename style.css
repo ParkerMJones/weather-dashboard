@@ -48,10 +48,17 @@ input[type=submit] {
   color: #ffffff;
 }
 
+#search-button {
+    color: white;
+    background-color: dodgerblue;
+}
+
 header {
     font-size: 40px;
     font-weight: bold;
-    background-color: blue;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    color: white;
     text-align: center;
     padding: 20px;
 }
@@ -71,6 +78,7 @@ header {
     background-color: navy;
     color: white;
     margin: 10px;
+    margin-top: 10px;
 }
 
 #forecast {
@@ -87,16 +95,17 @@ header {
     font-weight: bolder;
     color: white;
     text-align: center;
-    padding-bottom: 0px;
+    padding-bottom: 20px;
     border: none;
 }
 
 .card-body {
     text-align: center;
+    padding-top: 30px;
     padding-bottom: 30px;
     font-size: 16px;
     line-height: 30px;
     color: white;
-    background-color: dodgerblue;
+    background-color: navy;
     border: none;
 }
