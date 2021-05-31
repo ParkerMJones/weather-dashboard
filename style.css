@@ -47,3 +47,15 @@ input[type=submit] {
   background-color: DodgerBlue !important;
   color: #ffffff;
 }
+
+header {
+    font-size: 40px;
+    font-weight: bold;
+    background-color: blue;
+    text-align: center;
+    padding: 20px;
+}
+
+#forecast {
+    color: black
+}

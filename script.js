@@ -8,13 +8,6 @@ var day5 = document.getElementById("day5");
 
 searchButton = document.getElementById("search-button");
 
-var cityName = document.getElementById("cityName");
-
-var todayWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&appid=2bf17073b305273232e18de9ad5d534c"; 
-
-var forecastWeather = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName.value + "&appid=2bf17073b305273232e18de9ad5d534c";
-
-
 // autocomplete code taken from tutorialspoint.com
 function autocomplete(searchEle, arr) {
     var currentFocus;
@@ -101,24 +94,43 @@ function autocomplete(searchEle, arr) {
 
 
 
-searchButton.addEventListener('search', function() {
+searchButton.addEventListener('click', function() {
 console.log(cityName.value);
-fetch(todayWeather)
+fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&appid=2bf17073b305273232e18de9ad5d534c")
     .then(function(response) {
         return response.json();
     })
 
     .then(function (response) {
         console.log(response);
+
+        var todayHeader = document.createElement("h2");
+        todayHeader.textContent = response.name;
+        today.appendChild(todayHeader);
+
+        var temp = document.createElement("p");
+        temp.textContent = "Temp: " + response.main.temp;
+        today.appendChild(temp);
+
+        var wind = document.createElement("p");
+        wind.textContent = "Wind: " + response.wind.speed + " MPH";
+        today.appendChild(wind);
+
+        var humidity = document.createElement("p");
+        humidity.textContent = "Humidity: " + response.main.humidity + "%";
+        today.appendChild(humidity);
     })
 
-    fetch(forecastWeather)
-.then(function(response2) {
+    // 5 day forecast
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + cityName.value + "&appid=2bf17073b305273232e18de9ad5d534c")
+    .then(function(response2) {
     return response2.json();
 })
 
 .then(function (response2) {
     console.log(response2);
+    
+    
 });
 });
 
